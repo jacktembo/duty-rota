@@ -2,17 +2,15 @@ from django.db import models
 from dutyrota.utils import *
 from teachers.models import Teacher, Supervisor
 
+from datetime import date
+
 
 class DutyRota(models.Model):
     """Duty Rota for a specific day"""
     name = models.CharField(max_length=200)
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
     term = models.ForeignKey(Term, on_delete=models.CASCADE)
-    Month = models.ForeignKey(Month, on_delete=models.CASCADE)
-    # Week number in a term.
-    week_number = models.ForeignKey(Week, on_delete=models.CASCADE)
-    # The day of the week e.g Monday.
-    day = models.ForeignKey(Day, on_delete=models.CASCADE)
+    date = models.DateField()
     # Teachers on duty.
     teachers = models.ManyToManyField(
         Teacher, related_name='+')
@@ -21,4 +19,8 @@ class DutyRota(models.Model):
         Supervisor, related_name='+')
 
     def __str__(self):
-        return f"{self.day} week {self.week_number} term {self.term}"
+        #Date in format like Monday 10 January 2021.
+        return self.date.strftime('%A %B %w %Y')
+
+    class Meta:
+        verbose_name_plural = 'Duty Rotas'
