@@ -20,7 +20,7 @@ class DutyRota(models.Model):
 
     def __str__(self):
         #Date in format like Monday 10 January 2021.
-        return self.date.strftime('%A %B %w %Y')
+        return self.date.strftime('%A. %w %A')
 
     class Meta:
         verbose_name_plural = 'Duty Rotas'
