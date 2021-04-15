@@ -18,7 +18,7 @@ class Term(models.Model):
     term = models.CharField(max_length=10)
     number_of_weeks = 13
 
-    def _str__(self):
+    def __str__(self):
         return self.term
 
 
@@ -29,7 +29,7 @@ class Month(models.Model):
     month = models.CharField(max_length=20)
     number_of_days = models.IntegerField(default=30)
 
-    def _str__(self):
+    def __str__(self):
         return self.month
 
 
@@ -46,7 +46,7 @@ class Day(models.Model):
     """Represents a day in a week. E.g Monday"""
     day = models.CharField(max_length=20)
 
-    def _str__(self):
+    def __str__(self):
         return self.day
 
 
@@ -60,5 +60,5 @@ class Gender(models.Model):
 class Title(models.Model):
     title = models.CharField(max_length=5)
 
-    def _str__(self):
+    def __str__(self):
         return self.title
