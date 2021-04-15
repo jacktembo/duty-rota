@@ -5,7 +5,7 @@ from dutyrota.utils import Gender
 class Person(models.Model):
     """an abstract person where different persons type will inherit"""
     first_name = models.CharField(max_length=30)
-    other_name = models.CharField(required=False, max_length=30)
+    other_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
     nrc = models.CharField(max_length=12)
