@@ -10,7 +10,7 @@ class Year(models.Model):
     year = models.IntegerField(default=2021)
 
     def __str__(self):
-        return self.year
+        return f"{self.year}"
 
 
 class Term(models.Model):
@@ -39,7 +39,7 @@ class Week(models.Model):
     week = models.IntegerField()
 
     def __str__(self):
-        return self.week
+        return f"{self.week}"
 
 
 class Day(models.Model):

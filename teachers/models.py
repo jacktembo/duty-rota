@@ -1,13 +1,14 @@
 from django.db import models
-from dutyrota.utils import Gender
+from dutyrota.utils import Gender, Title
 
 
 class Person(models.Model):
     """an abstract person where different persons type will inherit"""
     first_name = models.CharField(max_length=30)
-    other_name = models.CharField(max_length=30)
+    other_names = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    title = models.ForeignKey(Title, on_delete=models.CASCADE)
     nrc = models.CharField(max_length=12)
     birth_date = models.DateField()
 
