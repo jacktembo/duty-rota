@@ -1,5 +1,5 @@
 from django.db import models
-from utils import Gender
+from dutyrota.utils import Gender
 
 
 class Person(models.Model):

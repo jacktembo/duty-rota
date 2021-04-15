@@ -16,4 +16,3 @@ class DutyRota(models.Model):
     # Teachers on duty.
     teachers = models.ManyToManyField('Teachers On Duty', Teacher)
     supervisors = models.ManyToManyField('supervisors On Duty', Supervisor)
-    
