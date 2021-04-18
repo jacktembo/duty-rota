@@ -12,6 +12,7 @@ tomorrow = today + timedelta(days=1)  # Tomorrows's date
 
 current_year = today.year
 
+
 def index(request):
     context = {}
     return render(request, 'index.html', context)
@@ -22,27 +23,20 @@ def today_rota(request):
     today_duty_rota = get_object_or_404(DutyRota, date=today)
     teachers_on_duty = today_duty_rota.teachers.all()
     supervisors_on_duty = today_duty_rota.supervisors.all()
+    tomorrow_duty_rota = get_object_or_404(DutyRota, date=tomorrow)
+    teachers_on_duty_tomorrow = tomorrow_duty_rota.teachers.all()
+    supervisors_on_duty_tomorrow = tomorrow_duty_rota.supervisors.all()
     context = {
+        'tomorrow_rota': tomorrow_duty_rota, 'tomorrow_teachers': teachers_on_duty_tomorrow,
+        'tomorrow_supervisors': supervisors_on_duty_tomorrow,
         'rota': today_duty_rota, 'teachers': teachers_on_duty,
         'supervisors': supervisors_on_duty,
     }
     return render(request, 'today_rota.html', context)
 
 
-def tomorrow_rota(request):
-    #Tomorrow's duty rota
-    tomorrow_duty_rota = get_object_or_404(DutyRota, date=tomorrow)
-    teachers_on_duty_tomorrow = tomorrow_duty_rota.teachers.all()
-    supervisors_on_duty_tomorrow = tomorrow_duty_rota.supervisors.all()
-    context = {
-        'rota': tomorrow_duty_rota, 'teachers': teachers_on_duty_tomorrow,
-        'supervisors': supervisors_on_duty_tomorrow
-    }
-    return render(request, 'tomorrow_rota.html', context)
-
-
 def annoucements(request):
-    #Announcements to either pupils or staff
+    # Announcements to either pupils or staff
     annoucements = get_list_or_404(Announcement)
     context = {
         'annoucements': annoucements
@@ -70,8 +64,3 @@ def check_who(request):
         }
 
         return render(request, 'check_who_results.html', context)
-
-
-
-
-

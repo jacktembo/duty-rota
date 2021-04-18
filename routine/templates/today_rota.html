@@ -10,9 +10,6 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <style>
-    table {
-        width: 85% !important;
-    }
     td {
         border: 1px solid green;
     }
@@ -93,18 +90,20 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Teacher</th>
+                            <th scope="col">Supervisor</th>
                             <th scope="col">Department</th>
                             <th scope="col">Contact</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark hjsdfjhd dhgrf</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
+                        {% for Supervisor in supervisors %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{Supervisor}}</td>
+                                <td>{{Supervisor.department}}</td>
+                                <td>{{Supervisor.phone_number}}</td>
+                            </tr>
+                        {% endfor %}
                 
                     </tbody>
                 </table>
@@ -130,12 +129,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark hjsdfjhd dhgrf</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
+                            {% for teacher in tomorrow_teachers%}
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{teacher}}</td>
+                                    <td>{{teacher.department}}</td>
+                                    <td>{{teacher.phone_number}}</td>
+                                </tr>
+                            {% endfor %}
                     
                         </tbody>
                     </table>
@@ -162,12 +163,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark hjsdfjhd dhgrf</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
+                            {% for Supervisor in tomorrow_supervisors%}
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{Supervisor}}</td>
+                                    <td>{{tsupervisor.department}}</td>
+                                    <td>{{Supervisor.phone_number}}</td>
+                                </tr>
+                            {% endfor %}
                     
                         </tbody>
                     </table>
