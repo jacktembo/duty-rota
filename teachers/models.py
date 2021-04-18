@@ -19,6 +19,7 @@ class Person(models.Model):
 
 class Teacher(Person):
     phone_number = models.CharField(max_length=14)
+    department = models.CharField(max_length=50)
     email = models.EmailField(max_length=64)
 
 
