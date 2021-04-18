@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers On Duty</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <style>
+        /* DivTable.com */
+        .divTable {
+            display: table;
+            width: 100%;
+        }
+
+        .divTableRow {
+            display: table-row;
+        }
+
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+        }
+
+        .divTableCell,
+        .divTableHead {
+            border: 1px solid #999999;
+            display: table-cell;
+            padding: 3px 10px;
+        }
+
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+            font-weight: bold;
+        }
+
+        .divTableFoot {
+            background-color: #EEE;
+            display: table-footer-group;
+            font-weight: bold;
+        }
+
+        .divTableBody {
+            display: table-row-group;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <!-- The top navigations -->
+    <header>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="">TDuty</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">More</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Login As Pupil</a></li>
+                    <li><a class="dropdown-item" href="#">Login As Staff</a></li>
+                    <li><a class="dropdown-item" href="#">Annnouncements</a></li>
+                    <li><a class="dropdown-item" href="#">Tomorrow's Duty</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!--  -->
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Teachers On Duty Today
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="divTable">
+                        <div class="divTableBody">
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;<strong>TEACHER</strong></div>
+                                <div class="divTableCell">&nbsp;<strong>DEPARTMENT</strong></div>
+                                <div class="divTableCell">&nbsp;<strong>PHONE</strong></div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher1</div>
+                                <div class="divTableCell">department1</div>
+                                <div class="divTableCell">&nbsp;phone1</div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher2</div>
+                                <div class="divTableCell">&nbsp;department3</div>
+                                <div class="divTableCell">&nbsp;phone2</div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher3</div>
+                                <div class="divTableCell">&nbsp;department3</div>
+                                <div class="divTableCell">&nbsp;phone3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DivTable.com -->
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Supervisors On Duty Today
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;<strong>TEACHER</strong></div>
+                            <div class="divTableCell">&nbsp;<strong>DEPARTMENT</strong></div>
+                            <div class="divTableCell">&nbsp;<strong>PHONE</strong></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;teacher1</div>
+                            <div class="divTableCell">department1</div>
+                            <div class="divTableCell">&nbsp;phone1</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;teacher2</div>
+                            <div class="divTableCell">&nbsp;department3</div>
+                            <div class="divTableCell">&nbsp;phone2</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">&nbsp;teacher3</div>
+                            <div class="divTableCell">&nbsp;department3</div>
+                            <div class="divTableCell">&nbsp;phone3</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- DivTable.com -->
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Teachers On Duty Tomorrow
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="divTable">
+                        <div class="divTableBody">
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;<strong>TEACHER</strong></div>
+                                <div class="divTableCell">&nbsp;<strong>DEPARTMENT</strong></div>
+                                <div class="divTableCell">&nbsp;<strong>PHONE</strong></div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher1</div>
+                                <div class="divTableCell">department1</div>
+                                <div class="divTableCell">&nbsp;phone1</div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher2</div>
+                                <div class="divTableCell">&nbsp;department3</div>
+                                <div class="divTableCell">&nbsp;phone2</div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher3</div>
+                                <div class="divTableCell">&nbsp;department3</div>
+                                <div class="divTableCell">&nbsp;phone3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DivTable.com -->
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Supervisors On Duty Tomorrow
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="divTable">
+                        <div class="divTableBody">
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;<strong>TEACHER</strong></div>
+                                <div class="divTableCell">&nbsp;<strong>DEPARTMENT</strong></div>
+                                <div class="divTableCell">&nbsp;<strong>PHONE</strong></div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher1</div>
+                                <div class="divTableCell">department1</div>
+                                <div class="divTableCell">&nbsp;phone1</div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher2</div>
+                                <div class="divTableCell">&nbsp;department3</div>
+                                <div class="divTableCell">&nbsp;phone2</div>
+                            </div>
+                            <div class="divTableRow">
+                                <div class="divTableCell">&nbsp;teacher3</div>
+                                <div class="divTableCell">&nbsp;department3</div>
+                                <div class="divTableCell">&nbsp;phone3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DivTable.com -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -24,3 +24,14 @@ class DutyRota(models.Model):
 
     class Meta:
         verbose_name_plural = 'Duty Rotas'
+
+
+class Announcement(models.Model):
+    """ Announcements to pupils or staff"""
+    subject = models.CharField(max_length=200)
+    body = models.TextField()
+    published_date = models.DateField(auto_now_add=True, editable=False)
+
+    def __str__(self):
+        return self.subject
+    
