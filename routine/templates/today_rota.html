@@ -10,6 +10,9 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <style>
+    table {
+        width: 85% !important;
+    }
     td {
         border: 1px solid green;
     }
@@ -53,23 +56,27 @@
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <table style="width: 90%; border-color: green; margin-left: auto; margin-right: auto;" border="2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Teacher</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Contact</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr>
-                                <td>&nbsp;<strong>TEACHER</strong></td>
-                                <td>&nbsp;<strong>DEPARTMENT</strong></td>
-                                <td>&nbsp;<strong>PHONE NO.</strong></td>
-                            </tr>
                             {% for teacher in teachers%}
-                            <tr>
-                                <td>{{teacher}}</td>
-                                <td>&nbsp;{{teacher.department}}</td>
-                                <td>&nbsp;{{teacher.phone_number}}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{teacher}}</td>
+                                    <td>{{teacher.department}}</td>
+                                    <td>{{teacher.phone_number}}</td>
+                                </tr>
                             {% endfor %}
+                    
                         </tbody>
                     </table>
-                        <!-- DivTable.com -->
                 </div>
             </div>
         </div>
@@ -82,23 +89,25 @@
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample">
-                <table style="width: 90%; border-color: green; margin-left: auto; margin-right: auto;" border="2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Teacher</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Contact</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
-                            <td>&nbsp;<strong>TEACHER</strong></td>
-                            <td>&nbsp;<strong>DEPARTMENT</strong></td>
-                            <td>&nbsp;<strong>PHONE NO.</strong></td>
+                            <th scope="row">1</th>
+                            <td>Mark hjsdfjhd dhgrf</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
                         </tr>
-                        {% for teacher in teachers%}
-                        <tr>
-                            <td>{{teacher}}</td>
-                            <td>&nbsp;{{teacher.department}}</td>
-                            <td>&nbsp;{{teacher.phone_number}}</td>
-                        </tr>
-                        {% endfor %}
+                
                     </tbody>
                 </table>
-                    <!-- DivTable.com -->
             </div>
         </div>
         <div class="accordion-item">
@@ -111,23 +120,25 @@
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <table style="width: 90%; border-color: green; margin-left: auto; margin-right: auto;" border="2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Teacher</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Contact</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
-                                <td>&nbsp;<strong>TEACHER</strong></td>
-                                <td>&nbsp;<strong>DEPARTMENT</strong></td>
-                                <td>&nbsp;<strong>PHONE NO.</strong></td>
+                                <th scope="row">1</th>
+                                <td>Mark hjsdfjhd dhgrf</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
                             </tr>
-                            {% for teacher in teachers%}
-                            <tr>
-                                <td>{{teacher}}</td>
-                                <td>&nbsp;{{teacher.department}}</td>
-                                <td>&nbsp;{{teacher.phone_number}}</td>
-                            </tr>
-                            {% endfor %}
+                    
                         </tbody>
                     </table>
-                        <!-- DivTable.com -->
                 </div>
             </div>
         </div>
@@ -141,27 +152,30 @@
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <table style="width: 90%; border-color: green; margin-left: auto; margin-right: auto;" border="2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Teacher</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Contact</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
-                                <td>&nbsp;<strong>TEACHER</strong></td>
-                                <td>&nbsp;<strong>DEPARTMENT</strong></td>
-                                <td>&nbsp;<strong>PHONE NO.</strong></td>
+                                <th scope="row">1</th>
+                                <td>Mark hjsdfjhd dhgrf</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
                             </tr>
-                            {% for teacher in teachers%}
-                            <tr>
-                                <td>{{teacher}}</td>
-                                <td>&nbsp;{{teacher.department}}</td>
-                                <td>&nbsp;{{teacher.phone_number}}</td>
-                            </tr>
-                            {% endfor %}
+                    
                         </tbody>
                     </table>
-                        <!-- DivTable.com -->
                 </div>
             </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
         integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
         crossorigin="anonymous"></script>
