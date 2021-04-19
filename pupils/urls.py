@@ -5,5 +5,7 @@ from .import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('permission', views.permission, name='permission'),
+
 
 ]

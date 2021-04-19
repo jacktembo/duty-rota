@@ -3,4 +3,8 @@ from django.shortcuts import render, Http404, HttpResponseRedirect
 
 
 def index(request):
-    return HttpResponse('Welcome to the HomePage Of The Duty Roata')
+    return HttpResponse('Hello World')
+
+
+
+

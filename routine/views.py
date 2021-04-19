@@ -5,6 +5,7 @@ from datetime import date, datetime, time, timedelta
 from .models import DutyRota, Announcement
 from teachers.models import Teacher, Supervisor
 from pupils.models import LeavePermission
+from django.views.decorators.csrf import csrf_exempt
 
 
 today = date.today()  # Today's date
@@ -64,3 +65,15 @@ def check_who(request):
         }
 
         return render(request, 'check_who_results.html', context)
+
+
+@csrf_exempt
+def endpoint(request):
+    if request.method == 'POST':
+        name = request.POST.get('email', False)
+        return render(request, 'tomorrow_rota.html', {'name': name})
+    else:
+        return HttpResponse('Hello World')
+
+
+LeavePermission()
