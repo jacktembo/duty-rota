@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from .models import LeavePermission
 
 
-class PermissionForm(ModelForm):
+class LeavePermissionForm(ModelForm):
     class Meta:
         model = LeavePermission
+        fields = '__all__'
