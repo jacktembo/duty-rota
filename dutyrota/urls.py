@@ -24,7 +24,7 @@ urlpatterns = [
     path('pupils/', include('pupils.urls')),
     path('routine/', include('routine.urls')),
     #     path('routine/', include('routine.urls')),
-    #     path('accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     #
 ]
 
