@@ -62,3 +62,28 @@ class Title(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Province(models.Model):
+    """province within a country"""
+    name = models.CharField(max_length=20)
+
+
+class District(models.Model):
+    """district within a province"""
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
+
+
+class Town(models.Model):
+    """town within a district"""
+    town = models.ForeignKey(District, on_delete=models.CASCADE)
+
+
+class Address(models.Model):
+    """full address of the school"""
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
+    district = models.ForeignKey(District, on_delete=models.CASCADE)
+    town = models.ForeignKey(Town, on_delete=models.CASCADE)
+    box = models.CharField(max_length=20)
+
+
