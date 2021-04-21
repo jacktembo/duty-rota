@@ -68,15 +68,24 @@ class Province(models.Model):
     """province within a country"""
     name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
+
 
 class District(models.Model):
     """district within a province"""
-    province = models.ForeignKey(Province, on_delete=models.CASCADE)
+    name = models.ForeignKey(Province, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class Town(models.Model):
     """town within a district"""
-    town = models.ForeignKey(District, on_delete=models.CASCADE)
+    name = models.ForeignKey(District, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class Address(models.Model):
@@ -85,5 +94,8 @@ class Address(models.Model):
     district = models.ForeignKey(District, on_delete=models.CASCADE)
     town = models.ForeignKey(Town, on_delete=models.CASCADE)
     box = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.box}, {self.town} - {self.district} {self.province} Zambia"
 
 

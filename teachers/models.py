@@ -12,6 +12,7 @@ class Person(models.Model):
     nrc = models.CharField(max_length=12)
     birth_date = models.DateField()
     image_url = models.URLField(blank=True, null=True)
+    picture = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

@@ -9,12 +9,15 @@ from datetime import date
 class School(models.Model):
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    logo = models.ImageField()
+    logo = models.ImageField(blank=True, null=True)
     headteacher = models.CharField(max_length=50)
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     website = models.CharField(max_length=64, blank=True, null=True)
     facebook = models.URLField(max_length=255)
     twitter = models.URLField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class DutyRota(models.Model):
