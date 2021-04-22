@@ -3,6 +3,8 @@
 project
 """
 from django.db import models
+from django.contrib.auth.models import User
+
 
 
 class Year(models.Model):
@@ -99,3 +101,9 @@ class Address(models.Model):
         return f"{self.box}, {self.town} - {self.district} {self.province} Zambia"
 
 
+class OneTimePassword(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    otp = models.IntegerField()
+
+    def __str__(self):
+        return f"Sent To {self.user} - {self.otp}"

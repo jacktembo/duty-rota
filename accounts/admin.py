@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+
+from dutyrota.utils import OneTimePassword
+
+admin.site.register(OneTimePassword)
