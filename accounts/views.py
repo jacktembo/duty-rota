@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from django.contrib.auth import login, load_backend, authenticate, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, \
     PasswordChangeForm
 from django.http import HttpResponseRedirect, HttpResponse
@@ -79,20 +79,21 @@ def change_password(request):
 
 
 def password_reset_confirm(request, email):
-    """entering one time password sent
-
-    Args:
-        request ([type]): [description]
-        email ([type]): [description]
-
-    Returns:
-        [type]: [description]
-    """
+    """entering one time password sent """
     if request.method != 'POST':
         return render(request, 'password_reset_confirm.html')
     else:
         otp = request.POST.get('otp', False)
-        db_otps = OneTimePassword.objects.get(email=email)
+        # otps sent to this email.
+        db_otps = OneTimePassword.objects.filter(email=email).all()
+        # getting otp values of the user
+        result = [value.otp for value in db_otps]
+        if otp in result:
+            user = User.objects.get(email=email)
+            login(request, user)  # Log the user in and redirect them.
+            return HttpResponse('success')
+        else:
+            return HttpResponse('incorrect otp')
 
 
 def password_reset(request):
@@ -104,7 +105,8 @@ def password_reset(request):
             user = User.objects.get(email=email_address)
             otp_number = generate_otp()  # generated otp.
             # Create otp object.
-            otp = OneTimePassword(user=user, otp=otp_number)
+            otp = OneTimePassword(
+                user=user, otp=otp_number, email=email_address)
             otp.save()  # Save one time password to database.
             subject = 'Your One Time Password'
             message = f"Your one time password is {otp_number}"

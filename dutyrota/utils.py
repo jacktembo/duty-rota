@@ -103,7 +103,8 @@ class Address(models.Model):
 
 class OneTimePassword(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    otp = models.IntegerField()
+    email = models.EmailField()
+    otp = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"Sent To {self.user} - {self.otp}"
+        return self.otp
