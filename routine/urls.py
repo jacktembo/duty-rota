@@ -7,6 +7,4 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('today-rota', views.today_rota, name='today-rota'),
     path('announcements', views.annoucements, name='announcements'),
-    path('check-who', views.check_who, name='check-who'),
-    path('endpoint', views.endpoint, name='endpoint')
 ]

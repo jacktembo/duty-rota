@@ -33,8 +33,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'dutyrota',
-    'pupils',
-    'teachers',
     'accounts',
     'routine',
     'django.contrib.admin',

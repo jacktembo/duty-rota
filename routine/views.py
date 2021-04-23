@@ -3,8 +3,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from datetime import date, datetime, time, timedelta
 from .models import DutyRota, Announcement
-from teachers.models import Teacher, Supervisor
-from pupils.models import LeavePermission
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -74,6 +72,3 @@ def endpoint(request):
         return render(request, 'tomorrow_rota.html', {'name': name})
     else:
         return HttpResponse('Hello World')
-
-
-LeavePermission()
