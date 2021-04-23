@@ -37,7 +37,6 @@ class Person(models.Model):
 
 
 class Teacher(Person):
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=14)
     department = models.CharField(max_length=50)
     email = models.EmailField(max_length=64)
@@ -47,10 +46,7 @@ class Supervisor(Teacher):
     pass
 
 
-
-
 class DutyRota(models.Model):
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
     """Duty Rota for a specific day"""
     name = models.CharField(max_length=200)
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
@@ -83,7 +79,6 @@ class Announcement(models.Model):
 
 
 class LeavePermission(models.Model):
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
     """Permission for pupils to leave """
     pupil_name = models.CharField(max_length=50)
     pupil_email = models.EmailField(max_length=64)
@@ -108,7 +103,6 @@ class Grade(models.Model):
 
 
 class Pupil(models.Model):
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
     pupil_id = models.CharField(max_length=20, primary_key=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
