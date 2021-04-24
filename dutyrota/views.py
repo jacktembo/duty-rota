@@ -3,7 +3,8 @@ from django.shortcuts import render, Http404, HttpResponseRedirect
 
 
 def index(request):
-    return HttpResponse('Hello World')
+    context = {}
+    return render(request, 'index.html', context)
 
 
 
