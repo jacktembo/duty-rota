@@ -21,29 +21,34 @@ class School(models.Model):
 
 
 class Person(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     """an abstract person where different persons type will inherit"""
-    first_name = models.CharField(max_length=30)
-    other_names = models.CharField(max_length=30, blank=True, null=True)
-    last_name = models.CharField(max_length=30)
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
     title = models.ForeignKey(Title, on_delete=models.CASCADE)
     nrc = models.CharField(max_length=12)
     birth_date = models.DateField()
-    image_url = models.URLField(blank=True, null=True)
     picture = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
-class Teacher(Person):
+class TeacherProfile(Person):
     phone_number = models.CharField(max_length=14)
     department = models.CharField(max_length=50)
     email = models.EmailField(max_length=64)
 
+    class Meta:
+        verbose_name = 'Teacher'
 
-class Supervisor(Teacher):
-    pass
+
+class SupervisorProfile(Person):
+    phone_number = models.CharField(max_length=14)
+    department = models.CharField(max_length=50)
+    email = models.EmailField(max_length=64)
+
+    class Meta:
+        verbose_name = 'Supervisor'
 
 
 class DutyRota(models.Model):
@@ -54,10 +59,10 @@ class DutyRota(models.Model):
     date = models.DateField()
     # Teachers on duty.
     teachers = models.ManyToManyField(
-        Teacher, related_name='+')
+        TeacherProfile, related_name='+')
 
     supervisors = models.ManyToManyField(
-        Supervisor, related_name='+')
+        SupervisorProfile, related_name='+')
 
     def __str__(self):
         # Date in format like Monday 10 January 2021.
@@ -80,10 +85,7 @@ class Announcement(models.Model):
 
 class LeavePermission(models.Model):
     """Permission for pupils to leave """
-    pupil_name = models.CharField(max_length=50)
-    pupil_email = models.EmailField(max_length=64)
-    pupil_id = models.CharField(max_length=20)
-    pupil_phone = models.CharField(max_length=10)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     reason = models.CharField(max_length=200)
     explanation = models.TextField()
     date_requested = models.DateTimeField(auto_now_add=True)
@@ -102,7 +104,7 @@ class Grade(models.Model):
         return self.grade
 
 
-class Pupil(models.Model):
+class PupilProfile(models.Model):
     pupil_id = models.CharField(max_length=20, primary_key=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
@@ -113,3 +115,6 @@ class Pupil(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+    class Meta:
+        verbose_name = 'Pupil'
