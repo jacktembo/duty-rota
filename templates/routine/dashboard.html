@@ -33,6 +33,10 @@
     header {
         background-color: black;
     }
+
+    section {
+        margin-top: 7vw;
+    }
 </style>
 
 <body>
@@ -74,6 +78,11 @@
 
         </div>
     </header><!-- End Header -->
+    <section>
+        {% block content %}
+    
+        {% endblock content %}
+    </section>
 
     <!-- Vendor JS Files -->
     <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>

@@ -30,6 +30,9 @@ class Person(models.Model):
     birth_date = models.DateField()
     picture = models.ImageField(blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.user.first_name} {self.user.last_name}"
+
 
 class TeacherProfile(Person):
     phone_number = models.CharField(max_length=14)
