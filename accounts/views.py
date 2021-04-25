@@ -32,24 +32,24 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse('routine:dashboard'))
         else:
             form = NewUserForm()
-            return render(request, "register.html", {"form": form})
+            return render(request, "accounts/register.html", {"form": form})
 
-    return render(request, "register.html", {"form": form})
+    return render(request, "accounts/register.html", {"form": form})
 
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("today-rota"))
+    return HttpResponseRedirect('/')
 
 
 def login_view(request):
     """Login a user in"""
     if request.method != "POST":
         form = AuthenticationForm()
-        return render(request, "login.html", {"form": form})
+        return render(request, "accounts/login.html", {"form": form})
     else:
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -57,7 +57,7 @@ def login_view(request):
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             login(request, user)
-            return HttpResponseRedirect(reverse('dashboard'))
+            return HttpResponseRedirect(reverse('routine:dashboard'))
         else:
             return HttpResponse("something went wrong.")
 

@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.contrib import admin
 from .import views
 
-
+app_name = 'accounts'
 urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('register', views.register, name='register'),

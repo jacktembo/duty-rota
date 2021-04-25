@@ -4,7 +4,7 @@ from django.shortcuts import render, Http404, HttpResponseRedirect
 
 def index(request):
     context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'dutyrota/index.html', context)
 
 
 

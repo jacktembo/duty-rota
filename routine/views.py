@@ -14,7 +14,7 @@ current_year = today.year
 
 def index(request):
     context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'routine/dashboard.html', context)
 
 
 def today_rota(request):
@@ -31,7 +31,7 @@ def today_rota(request):
         'rota': today_duty_rota, 'teachers': teachers_on_duty,
         'supervisors': supervisors_on_duty,
     }
-    return render(request, 'today_rota.html', context)
+    return render(request, 'routine/today_rota.html', context)
 
 
 def annoucements(request):
@@ -40,7 +40,7 @@ def annoucements(request):
     context = {
         'annoucements': annoucements
     }
-    return render(request, 'announcements.html', context)
+    return render(request, 'routine/announcements.html', context)
 
 
 def leave_permission(request):
