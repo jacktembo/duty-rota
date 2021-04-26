@@ -31,7 +31,7 @@ class Person(models.Model):
     picture = models.ImageField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user.first_name} {self.user.last_name}"
+        return f"{self.title} {self.user.first_name} {self.user.last_name}"
 
 
 class TeacherProfile(Person):
