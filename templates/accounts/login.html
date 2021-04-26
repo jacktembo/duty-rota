@@ -7,13 +7,28 @@
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
+<style>
+    html {
+        background-color: rgb(170, 170, 197);
+    }
 
+    .my-form {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+</style>
 <body>
-    <form action="{% url 'accounts:login' %}" method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Login</button>
-    </form>
+    <div class="my-form">
+        <form action="{% url 'accounts:login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 {% endblock %}
 

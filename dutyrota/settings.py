@@ -133,3 +133,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = secretes.email
 EMAIL_HOST_PASSWORD = secretes.password
+
+
+LOGIN_URL = 'accounts:login'

@@ -1,8 +1,11 @@
 {% extends "routine/dashboard.html" %}
 {% block content %}
 <style>
+body {
+    background-color: rgb(198, 205, 224);
+}
 td {
-border: 1px solid green;
+border: 1px solid green !important;
 }
 a {
     text-decoration: none;
@@ -22,127 +25,166 @@ table {
     text-align: center;
 }
 
-</style>
+.accordion-header .heading {
+    font-size: 130% !important;
+}
 
-<main>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                aria-expanded="false" aria-controls="collapseTwo">
-                Teachers On Duty Today
-            </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Teacher</th>
-                        <th scope="col">Contact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for teacher in teachers %}
-                        <tr>
-                            <td>{{teacher}}</td>
-                            <td>{{teacher.phone_number}}</td>
-                        </tr>
-                    {% endfor %}
-    
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Supervisors On Duty Today
-            </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Supervisor</th>
-                        <th scope="col">Contact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for Supervisor in supervisors %}
-                        <tr>
-                            <td>{{Supervisor}}</td>
-                            <td>{{Supervisor.phone_number}}</td>
-                        </tr>
-                    {% endfor %}
-    
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Teachers On Duty Tomorrow
-            </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Teacher</th>
-                            <th scope="col">Contact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for teacher in tomorrow_teachers%}
+.card {
+    width: 99vw;
+    margin-left: 0.1rem;
+    border: 1px solid green;
+    margin-bottom: 3rem;
+}
+.card-footer {
+    color: rgb(18, 92, 165) !important;
+    font-weight: bold !important;
+    font-size: 80%;
+}
+
+@media screen and (min-width: 1024px) {
+    .card {
+        width: 70%;
+    }
+
+   .two-cards {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+}
+</style>
+<div class="two-cards">
+    <div class="card text-center">
+        <main>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        <span class="heading">Teachers On Duty Today</span>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td>{{teacher}}</td>
-                                <td>{{teacher.phone_number}}</td>
+                                <th scope="col">Teacher</th>
+                                <th scope="col">Contact</th>
                             </tr>
-                        {% endfor %}
+                        </thead>
+                        <tbody>
+                            {% for teacher in teachers %}
+                                <tr>
+                                    <td>{{teacher}}</td>
+                                    <td>{{teacher.phone_number}}</td>
+                                </tr>
+                            {% endfor %}
     
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="accordion-item"> 
-        <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Supervisors On Duty Tomorrow
-            </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Teacher</th>
-                            <th scope="col">Contact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for Supervisor in tomorrow_supervisors%}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span class="heading">Supervisors On Duty Today</span>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td>{{Supervisor}}</td>
-                                <td>{{Supervisor.phone_number}}</td>
+                                <th scope="col">Supervisor</th>
+                                <th scope="col">Contact</th>
                             </tr>
-                        {% endfor %}
+                        </thead>
+                        <tbody>
+                            {% for Supervisor in supervisors %}
+                                <tr>
+                                    <td>{{Supervisor}}</td>
+                                    <td>{{Supervisor.phone_number}}</td>
+                                </tr>
+                            {% endfor %}
     
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        <div class="card-footer text-muted">
+            Today's Teachers And Supervisors On Duty
         </div>
-    </div>
-    </div>
-</main>
+        </div>
+        
+        <div class="card text-center">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span class="heading">Teachers On Duty Tomorrow</span>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Teacher</th>
+                                    <th scope="col">Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for teacher in tomorrow_teachers%}
+                                    <tr>
+                                        <td>{{teacher}}</td>
+                                        <td>{{teacher.phone_number}}</td>
+                                    </tr>
+                                {% endfor %}
+    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span class="heading">Supervisors On Duty Tomorrow</span>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Teacher</th>
+                                    <th scope="col">Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for Supervisor in tomorrow_supervisors%}
+                                    <tr>
+                                        <td>{{Supervisor}}</td>
+                                        <td>{{Supervisor.phone_number}}</td>
+                                    </tr>
+                                {% endfor %}
+    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                Tomorrow's Teachers and Supervisors On Duty
+            </div>
+            </div>
+            </div>
+    </main>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
 integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"

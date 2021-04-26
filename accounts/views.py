@@ -57,7 +57,7 @@ def login_view(request):
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             login(request, user)
-            return HttpResponseRedirect(reverse('routine:dashboard'))
+            return HttpResponseRedirect(reverse('routine:today-rota'))
         else:
             return HttpResponse("something went wrong.")
 

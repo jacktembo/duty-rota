@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from datetime import date, datetime, time, timedelta
 from .models import DutyRota, Announcement
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 
 today = date.today()  # Today's date
@@ -17,6 +17,7 @@ def index(request):
     return render(request, 'routine/dashboard.html', context)
 
 
+@login_required
 def today_rota(request):
     # Duty rota that has today's date
     today_duty_rota = get_object_or_404(DutyRota, date=today)
@@ -34,6 +35,7 @@ def today_rota(request):
     return render(request, 'routine/today_rota.html', context)
 
 
+@login_required
 def annoucements(request):
     # Announcements to either pupils or staff
     annoucements = get_list_or_404(Announcement)
@@ -43,6 +45,7 @@ def annoucements(request):
     return render(request, 'routine/announcements.html', context)
 
 
+@login_required
 def leave_permission(request):
     return HttpResponse('Hello LeavePermission')
 
