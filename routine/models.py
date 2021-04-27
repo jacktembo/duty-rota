@@ -78,7 +78,8 @@ class Announcement(models.Model):
     subject = models.CharField(max_length=200)
     body = models.TextField()
     target_audience = models.CharField(max_length=50)
-    published_date = models.DateField(auto_now_add=True, editable=False)
+    published_date_time = models.DateTimeField(
+        auto_now_add=True, editable=False)
 
     def __str__(self):
         return self.subject

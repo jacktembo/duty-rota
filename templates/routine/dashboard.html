@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Tdudy | Dashboard</title>
+    <title>{% block title %}
+    
+        {% endblock title %}</title>
     <meta content="Check The Teacher On Duty" name="description">
     <meta content=" Teacher on Duty School 
           lusaka zambia." name="keywords">
@@ -55,7 +57,7 @@
                     {% if request.user.is_authenticated %}
                     <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#">Announcements</a></li>
+                            <li><a href="{% url 'routine:announcements' %}">Announcements</a></li>
                             
                         </ul>
                     </li>
@@ -77,6 +79,11 @@
     
         {% endblock content %}
     </section>
+    <section class="announcements">
+        {% block announcements %}
+    
+        {% endblock %}
+    </section>
 
     <!-- Vendor JS Files -->
     <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
@@ -89,6 +96,7 @@
 
     <!-- Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
+    
 </body>
 
 </html>

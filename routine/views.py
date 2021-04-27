@@ -12,6 +12,7 @@ tomorrow = today + timedelta(days=1)  # Tomorrows's date
 current_year = today.year
 
 
+@login_required
 def index(request):
     context = {}
     return render(request, 'routine/dashboard.html', context)
@@ -38,9 +39,9 @@ def today_rota(request):
 @login_required
 def annoucements(request):
     # Announcements to either pupils or staff
-    annoucements = get_list_or_404(Announcement)
+    announcements = Announcement.objects.order_by('-published_date_time')[:10]
     context = {
-        'annoucements': annoucements
+        'announcements': announcements
     }
     return render(request, 'routine/announcements.html', context)
 

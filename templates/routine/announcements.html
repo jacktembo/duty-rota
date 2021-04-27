@@ -1,16 +1,88 @@
-{% extends "dashboard.html" %}
-{% block content %}
+{% extends "routine/dashboard.html" %}
+{% load static %}
+{% block title %}
+Announcements | TDUTY
+{% endblock title %}
+{% block announcements %}
+<h1>Announcements</h1>
+
+<style>
+    h1 {
+        text-align: center;
+        margin: 1rem;
+        text-transform: uppercase;
+        color: rgb(41, 102, 163);
+        font-weight: bold;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .card {
+        background-color: rgb(208, 215, 221);
+
+    }
+
+    .card-list-item {
+        width: 100%;
+        margin-right: 5vw !important;
+        list-style-type: none !important;
+        border-radius: 1%;
+    }
+
+    .card-list {
+
+        text-align: center;
+        margin-right: 1rem;
+    }
+
+    .col-md-4 {
+        transform: scale(0.6);
+    }
+
+    body {
+        background-color: rgb(173, 173, 194);
+    }
+
+    @media screen and (min-width: 1024px) {
+        .card {
+            border-radius: 2%;
+            width: 105% !important;
+        }
+
+        .card-list-item {
+            display: inline-block;
+            border: unset;
+        }
+
+        .card-list {
+            display: inline-block;
+            width: 45vw;
+        }
+    }
+</style>
+
 {% for announcement in announcements %}
-<div class="card">
-    <div class="card-header">
-        {{announcement.subject}}
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
+<ul class="card-list">
+    <li class="card-list-item">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'images/announcement.svg' %}" alt="announcements icon">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{announcement.subject}}</h5>
+                <p class="card-text">{{announcement.body}}</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+                </div>
+        </div>
+        </div>
+        </li>
+        </ul>
+
 {% endfor %}
-{% endblock content %}
-d
+{% endblock %}
