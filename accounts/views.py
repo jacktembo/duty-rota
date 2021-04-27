@@ -51,13 +51,13 @@ def login_view(request):
         form = AuthenticationForm()
         return render(request, "accounts/login.html", {"form": form})
     else:
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            login(request, user)
-            return HttpResponseRedirect(reverse('routine:today-rota'))
+        username = request.POST.get('username', False)
+        password = request.POST.get('password', False)
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+                login(request, user)
+                return HttpResponseRedirect(reverse('routine:today-rota'))
         else:
             return HttpResponse("something went wrong.")
 
@@ -67,7 +67,7 @@ def change_password(request):
     if request.method != "POST":
         user = request.user
         form = PasswordChangeForm(user)
-        return render(request, "password_change.html", {"form": form})
+        return render(request, "accounts/password_change.html", {"form": form})
     else:
         user = request.user
         form = PasswordChangeForm(user=request.user, data=request.POST)
@@ -81,7 +81,7 @@ def change_password(request):
 def password_reset_confirm(request, email):
     """entering one time password sent """
     if request.method != 'POST':
-        return render(request, 'password_reset_confirm.html')
+        return render(request, 'accounts/password_reset_confirm.html')
     else:
         otp = request.POST.get('otp', False)
         # otps sent to this email.
@@ -98,7 +98,7 @@ def password_reset_confirm(request, email):
 
 def password_reset(request):
     if request.method != 'POST':
-        return render(request, 'password_reset.html')
+        return render(request, 'accounts/password_reset.html')
     else:
         try:
             email_address = request.POST.get('email', False)

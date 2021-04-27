@@ -46,6 +46,13 @@ def annoucements(request):
     return render(request, 'routine/announcements.html', context)
 
 
+def announcement_detail(request, id):
+    announcement = get_object_or_404(Announcement, id=id)
+    context = {
+        'announcement': announcement
+    }
+    return render(request, 'routine/announcement_detail.html', context)
+
 @login_required
 def leave_permission(request):
     return HttpResponse('Hello LeavePermission')
