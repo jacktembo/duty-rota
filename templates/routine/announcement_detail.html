@@ -2,13 +2,15 @@
 
 {% load static %}
 {% block content %}
+<title>Announcement</title>
 <style>
     .card {
+        width: 95vw !important;
         background-color: rgb(208, 215, 221);
     }
 
     .card-img-top {
-        width: 40vw;
+        width: 30vw;
     }
 
     .btn-primary {
@@ -33,15 +35,23 @@
             width: 15vw;
         }
     }
+
+    .card-box {
+        display: flex;
+        justify-content: center;
+    }
+
 </style>
-<div class="card" style="width: 18rem;">
-    <img src="{% static 'images/announcement-detail.svg' %}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{announcement.subject}}</h5>
-        <p class="card-text">{{announcement.body}}</p>
-        <a class="btn btn-primary">{{announcement.published_date_time}}</a>
-        <a href="{% url 'routine:announcements' %}" class="btn btn-primary back">
-            &lt;---- </__>Go Back</a>
+<div class="card-box">
+    <div class="card" style="width: 18rem;">
+        <img src="{% static 'images/announcement-detail.svg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{announcement.subject}}</h5>
+            <p class="card-text">{{announcement.body}}</p>
+            <a class="btn btn-primary">{{announcement.published_date_time}}</a>
+            <a href="{% url 'routine:announcements' %}" class="btn btn-primary back">
+                &lt;---- </__>Go Back</a>
+        </div>
     </div>
 </div>
 {% endblock content %}
