@@ -7,6 +7,13 @@ from datetime import date
 from django.db import models
 
 
+class Week(models.Model):
+    week_number = models.IntegerField()
+
+    def __str__(self):
+        return str(self.week_number)
+
+
 class School(models.Model):
     admin = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
@@ -54,10 +61,10 @@ class SupervisorProfile(Person):
 
 class DutyRota(models.Model):
     """Duty Rota for a specific day"""
-    name = models.CharField(max_length=200)
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
     term = models.ForeignKey(Term, on_delete=models.CASCADE)
-    date = models.DateField()
+    week_number = models.ForeignKey(Week, on_delete=models.CASCADE)
     # Teachers on duty.
     teachers = models.ManyToManyField(
         TeacherProfile, related_name='+')
@@ -67,7 +74,7 @@ class DutyRota(models.Model):
 
     def __str__(self):
         # Date in format like Monday 10 January 2021.
-        return self.date.strftime('%A. %w %A')
+        return f"Week {self.week_number}"
 
     class Meta:
         verbose_name_plural = 'Duty Rotas'

@@ -2,14 +2,31 @@ from django.shortcuts import render, reverse, get_list_or_404, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 
 from datetime import date, datetime, time, timedelta
+import math
 from .models import DutyRota, Announcement
 from django.contrib.auth.decorators import login_required
 
 
-today = date.today()  # Today's date
-tomorrow = today + timedelta(days=1)  # Tomorrows's date
-
+today = datetime.today()
 current_year = today.year
+tomorrow = today + timedelta(days=1, minutes=1)  # Tomorrows's date
+opening_date = datetime(2021, 8, 16)
+week = timedelta(days=7)
+days_passed = today - opening_date
+result = days_passed / week
+
+if type(result == float):
+    week_number = math.ceil(result)
+else:
+    week_number = result
+
+tomorrow_days_passed = tomorrow - opening_date
+tomorrow_result = tomorrow_days_passed / week
+
+if type(tomorrow_result == float):
+    tomorrow_week_number = math.ceil(tomorrow_result)
+elif type(tomorrow_result == int):
+    tomorrow_week_number = tomorrow_result
 
 
 @login_required
@@ -21,10 +38,12 @@ def index(request):
 @login_required
 def today_rota(request):
     # Duty rota that has today's date
-    today_duty_rota = get_object_or_404(DutyRota, date=today)
+    today_duty_rota = get_object_or_404(
+        DutyRota, week_number__week_number=week_number)
     teachers_on_duty = today_duty_rota.teachers.all()
     supervisors_on_duty = today_duty_rota.supervisors.all()
-    tomorrow_duty_rota = get_object_or_404(DutyRota, date=tomorrow)
+    tomorrow_duty_rota = get_object_or_404(
+        DutyRota, week_number__week_number=tomorrow_week_number)
     teachers_on_duty_tomorrow = tomorrow_duty_rota.teachers.all()
     supervisors_on_duty_tomorrow = tomorrow_duty_rota.supervisors.all()
     context = {
@@ -52,6 +71,7 @@ def announcement_detail(request, id):
         'announcement': announcement
     }
     return render(request, 'routine/announcement_detail.html', context)
+
 
 @login_required
 def leave_permission(request):
