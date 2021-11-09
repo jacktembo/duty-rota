@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
+<style>
+    body {
+        background-color: rgb(199, 206, 219)
+    }
+
+    label {
+        display: block;
+        margin: 0.1rem;
+        font-weight: bold;
+    }
+</style>
+
 <body>
     <style>
     </style>
@@ -25,33 +38,39 @@
                                 <form action="{% url 'accounts:login' %}" method="post">
                                     {% csrf_token %}
                                     <div class="form-label-group">
-                                        <input type="text" id="inputText" class="form-control" placeholder="Username" required autofocus name="username">
                                         <label for="inputText">Username</label>
+                                        <input type="text" id="inputText" class="form-control" placeholder="Username"
+                                            required autofocus name="username" minlength="4" maxlength="20">
                                     </div>
-                                    
+
                                     <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
                                         <label for="inputPassword">Password</label>
+                                        <input type="password" id="inputPassword" class="form-control"
+                                            placeholder="Password" required name="password" minlength="4"
+                                            maxlength="20">
                                     </div>
-                                    
+
                                     <div class="custom-control custom-checkbox mb-3">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                        <label class="custom-control-label" for="customCheck1">Stay Signed In</label>
                                     </div>
-                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign
+                                    <button
+                                        class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                                        type="submit">Sign
                                         in</button>
                                     <div class="text-center">
                                         <a class="small" href="{% url 'accounts:password-reset' %}">Forgot password?</a>
                                     </div>
-                  </form>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

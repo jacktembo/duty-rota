@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Tdudy | Welcome</title>
+    <title>TDS | Welcome</title>
     <meta content="Check The Teacher On Duty" name="description">
     <meta content=" Teacher on Duty School 
           lusaka zambia." name="keywords">
@@ -30,6 +30,10 @@
 
 </head>
 <style>
+    .dropdown-active {
+        background-color: rgb(199, 206, 219) !important;
+    }
+
     footer {
         display: flex;
         justify-content: center;
@@ -57,10 +61,10 @@
         margin-bottom: 0.5rem;
     }
 
-    
+
 
     @media (max-width: 575px) and (max-width: 768px) {
-        
+
         #hero {
 
             height: 95vh;
@@ -75,8 +79,9 @@
             animation: up-down 3s ease-in-out infinite alternate-reverse both;
 
         }
+
         .navbar ul {
-        background-color: rgb(199, 206, 219);
+            background-color: rgb(199, 206, 219);
         }
     }
 </style>
@@ -87,7 +92,7 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="">TDUTY</a></h1>
+            <h1 class="logo me-auto"><a href="">TDS</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="v2.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -95,21 +100,24 @@
                 <ul>
                     </li>
                     {% if request.user.is_authenticated %}
-                    <li><a class="nav-link scrollto" href="{% url 'routine:today-rota' %}">Check Rota</a>
+                    <li><a class="nav-link scrollto" href="{% url 'routine:today-rota' %}">Who is on duty?</a>
                     <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{% url 'routine:announcements' %}">Announcements</a></li>
-                            
-                            </li>
-                        </ul>
-                    </li>
-                    {% endif %}
 
-                    {% if request.user.is_authenticated %}
-                    <li><a class="getstarted scrollto" href="{% url 'accounts:logout' %}">Logout</a></li>
-                    {% else %}
-                    <li><a class="getstarted scrollto" href="{% url 'accounts:login' %}">Login</a></li>
+                    </li>
+                    {% if request.user.is_staff %}
+                    <li><a href="/admin">Admin Area</a></li>
                     {% endif %}
+                </ul>
+                </li>
+                {% endif %}
+
+                {% if request.user.is_authenticated %}
+                <li><a class="getstarted scrollto" href="{% url 'accounts:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a class="getstarted scrollto" href="{% url 'accounts:login' %}">Login</a></li>
+                {% endif %}
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -152,7 +160,7 @@
     <footer>
         <div class="developer">
             <p>
-                Copyright &copy; 2021. Developed By <a href="https://www.jacktembo.com">Jack Tembo</a>
+                Copyright &copy; 2022. Developed By <a href="https://jackprogrammer.online">MagicBrains</a>
             </p>
         </div>
     </footer>

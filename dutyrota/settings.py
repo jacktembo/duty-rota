@@ -26,7 +26,7 @@ SECRET_KEY = 'hmf5e(o18c(#7p!adzpd_s_+me))xw#g3@hhtsqp!zgasrsyh0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,8 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -136,3 +134,5 @@ EMAIL_HOST_PASSWORD = secretes.password
 
 
 LOGIN_URL = 'accounts:login'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

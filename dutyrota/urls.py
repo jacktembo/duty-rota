@@ -18,6 +18,8 @@ from django.contrib import admin
 from .import views
 
 app_name = 'dutyrota'
+admin.AdminSite.site_title = 'Teachers Duty Schedule'
+admin.AdminSite.site_header = "Teacher's Duty Schedule"
 
 urlpatterns = [
     path('', views.index, name='index'),

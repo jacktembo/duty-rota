@@ -62,9 +62,8 @@ class SupervisorProfile(Person):
 class DutyRota(models.Model):
     """Duty Rota for a specific day"""
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
     term = models.ForeignKey(Term, on_delete=models.CASCADE)
-    week_number = models.ForeignKey(Week, on_delete=models.CASCADE)
+    week_number = models.ForeignKey(Week, on_delete=models.CASCADE, unique=True)
     # Teachers on duty.
     teachers = models.ManyToManyField(
         TeacherProfile, related_name='+')
@@ -84,7 +83,11 @@ class Announcement(models.Model):
     """ Announcements to pupils or staff"""
     subject = models.CharField(max_length=200)
     body = models.TextField()
-    target_audience = models.CharField(max_length=50)
+    target_audience = models.CharField(max_length=50, choices=[
+        ('Students', 'Students'),
+        ('Teachers', 'Teachers'),
+        ('Supervisors', 'Supervisors')
+    ])
     published_date_time = models.DateTimeField(
         auto_now_add=True, editable=False)
 
