@@ -19,6 +19,15 @@
     background-color: rgb(208, 215, 221);
   }
 
+  .card-title {
+    text-decoration: underline;
+  }
+
+  .card-title:hover,
+  .card-text:hover {
+    color: black;
+  }
+
   .card-list-item {
     margin-right: 5vw !important;
     list-style-type: none !important;
@@ -34,6 +43,7 @@
   .col-md-4 img {
     transform: scale(0.4);
   }
+
 
   body {
     background-color: rgb(173, 173, 194);
@@ -72,8 +82,8 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">{{announcement.subject}}</h5>
-              <p class="card-text">{{announcement.body | truncatechars:55}}</p>
+              <h4 class="card-title">{{announcement.subject}}</h4>
+              <p class="card-text">{{announcement.body | truncatechars:75}}</p>
               <p class="card-text">
                 <small class="text-muted">{{announcement.published_date_time}}</small>
               </p>
