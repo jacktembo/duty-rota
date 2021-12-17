@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 today = datetime.today()
 current_year = today.year
 tomorrow = today + timedelta(days=1, minutes=1)  # Tomorrows's date
-opening_date = datetime(2021, 10, 23)
+opening_date = datetime(2021, 11, 23)
 week = timedelta(days=7)
 days_passed = today - opening_date
 result = days_passed / week
@@ -65,6 +65,7 @@ def annoucements(request):
     return render(request, 'routine/announcements.html', context)
 
 
+@login_required
 def announcement_detail(request, id):
     announcement = get_object_or_404(Announcement, id=id)
     context = {
