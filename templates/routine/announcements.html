@@ -64,31 +64,24 @@
 {% for announcement in announcements %}
 <ul class="card-list">
   <li class="card-list-item">
-    <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="{% static 'images/announcement.svg' %}"
-            alt="announcements icon"
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{announcement.subject}}</h5>
-            <p class="card-text">{{announcement.body | truncatechars:55}}</p>
-            <p class="card-text">
-              <small class="text-muted"
-                >{{announcement.published_date_time}}</small
-              >
-            </p>
-            <a
-              href="{% url 'routine:announcement-detail' announcement.id %}"
-              class="btn btn-primary"
-              >Read More</a
-            >
+    <a href="{% url 'routine:announcement-detail' announcement.id %}">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{% static 'images/announcement.svg' %}" alt="announcements icon" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{announcement.subject}}</h5>
+              <p class="card-text">{{announcement.body | truncatechars:55}}</p>
+              <p class="card-text">
+                <small class="text-muted">{{announcement.published_date_time}}</small>
+              </p>
+              <a href="{% url 'routine:announcement-detail' announcement.id %}" class="btn btn-primary">Read More</a>
+            </div>
           </div>
         </div>
-      </div>
+    </a>
     </div>
   </li>
 </ul>
